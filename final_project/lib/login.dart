@@ -1,106 +1,163 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:final_project/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
+
+import 'auth_service.dart';
 
 class MyLogin extends StatefulWidget {
-  // const MyLogin({Key? key}) : super(key: key);
+  const MyLogin({Key? key}) : super(key: key);
 
   @override
   State<MyLogin> createState() => _MyLoginState();
 }
 
 class _MyLoginState extends State<MyLogin> {
+  final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
+
+  AuthService authService = new AuthService();
+
+  Login() async {
+    if(_formKey.currentState!.validate()){
+
+      await authService.signInEmailAndPass(emailController.text,passwordController.text ).then((val){
+        if(val != null){
+
+          // HelperFunctions.saveUserLoggedInDetails(isLoggedIn : true);
+          Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>MyHome()));
+        }
+      });
+
+    }
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/loginbg.png'), fit: BoxFit.cover
-        )
+
+    final emailFeild = Container(
+        width: MediaQuery
+            .of(context)
+            .size
+            .width - 48,
+
+      child: TextFormField(
+        autofocus: false,
+        controller: emailController,
+        keyboardType: TextInputType.emailAddress,
+        onSaved: (value) {
+          emailController.text = value!;
+        },
+        textInputAction: TextInputAction.next,
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          hintText: "DDU Email ID",
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          )
+        ),
       ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            Container(
-              padding: EdgeInsets.only(left: 35, top: 220),
-              child: Text(
-                'Welcome!',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 33
-                ),
-              ),
-            ),
-            Container(
-                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.39,
-                    right: 35,
-                    left: 35
-                ),
-                child: Column(
-                  children: [
-                    //   Text(
-                    //   'Enter Your Valid DDU ID',
-                    //   textAlign: TextAlign.left,
-                    //   style: TextStyle(
-                    //     color: Colors.black,
-                    //     fontSize: 18,
-                    //     fontWeight: FontWeight.bold,
-                    //   ),
-                    //
-                    // ),
-                    SizedBox(height: 10),
-                    TextField(
-                      decoration: InputDecoration(
-                        fillColor: Colors.grey.shade100,
-                        hintText: 'DDU Email ID',
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10)
-                        )
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          fillColor: Colors.grey.shade100,
-                          hintText: 'Password',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)
-                          )
-                      ),
-                    ),
-                    SizedBox(height: 40),
-                    Row(
-                      children: <Widget>[
-                        ElevatedButton(
-                        child: Text('Login'),
-                        onPressed: () {
-                          Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => MyHome()),
-                          );},
-                        style: ElevatedButton.styleFrom(
-                            primary: Colors.deepOrangeAccent,
-                            shadowColor: Colors.black,
-                            elevation: 15,
-                            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-                            textStyle: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      ],
-                      mainAxisAlignment: MainAxisAlignment.center,
-                    ),
-                  ],
-                ),
+    );
+
+    final passwordFeild = Container(
+      width: MediaQuery
+            .of(context)
+            .size
+            .width - 48,
+
+      child: TextFormField(
+        autofocus: false,
+        controller: passwordController,
+        obscureText: true,
+        keyboardType: TextInputType.emailAddress,
+        onSaved: (value) {
+          passwordController.text = value!;
+        },
+        textInputAction: TextInputAction.next,
+        decoration: InputDecoration(
+            contentPadding: EdgeInsets.fromLTRB(25, 15, 25, 15),
+            hintText: "Password",
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
             )
-          ],
-        )
-
+        ),
       ),
+    );
 
+    Widget orangeButton(  BuildContext context,String label) {
+      return Container(
+          width: MediaQuery
+          .of(context)
+          .size
+          .width - 48,
+        padding: EdgeInsets.symmetric(vertical: 18),
+        decoration: BoxDecoration(
+            color: Colors.deepOrangeAccent,
+            borderRadius: BorderRadius.circular(30)
+        ),
+        alignment: Alignment.center,
+
+        child: Text(
+          label, style: TextStyle(color: Colors.white, fontSize: 16),),
+      );
+    }
+    // final  loginButton = Material(
+    //   elevation: 5,
+    //   color: Colors.deepOrangeAccent,
+    //   borderRadius: BorderRadius.circular(30),
+    //   child: MaterialButton(
+    //     padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+    //     minWidth: MediaQuery.of(context).size.width,
+    //     onPressed: (){
+    //       Text("Login", textAlign: TextAlign.center,
+    //       style: TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.bold),
+    //       );
+    //     },
+    //   ),
+    // );
+    return Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage('assets/loginbg.png'), fit: BoxFit.cover,
+
+
+
+    )
+    ),
+
+    child: Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                emailFeild,
+              SizedBox(height:20),
+                passwordFeild,
+                SizedBox(height:20),
+
+                GestureDetector(
+                  onTap: (){
+                    Login();
+                  },
+
+                    child: orangeButton(context,"Login")
+                ),
+              ],
+            ),
+          ),
+        )
+      ),
+    ),
     );
   }
 }
+
+
