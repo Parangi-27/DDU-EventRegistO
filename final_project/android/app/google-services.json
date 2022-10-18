@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "252688519580",
+    "project_id": "ddu-clubs-6bdd6",
+    "storage_bucket": "ddu-clubs-6bdd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252688519580:android:e8d68b0abfa9c81f7e3859",
+        "android_client_info": {
+          "package_name": "com.example.final_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252688519580-5jkh1b7gd02uf1hmmsbn436g3qmk9klq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNE4uiX-XegMefWbP1pmAu6Zxri24QakM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252688519580-5jkh1b7gd02uf1hmmsbn436g3qmk9klq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
