@@ -1,3 +1,4 @@
+import 'package:final_project/club.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -33,9 +34,8 @@ class NavBar extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.event),
-              title: Text('Upcoming Events'),
-              onTap: () => null,
+              leading: Icon(Icons.access_time_rounded),
+              title: Text('Recent Events'),
               trailing: ClipOval(
               child: Container(
                 color: Colors.red,
@@ -55,16 +55,14 @@ class NavBar extends StatelessWidget {
               ),
             ),
             ),
-            ListTile(
-              leading: Icon(Icons.access_time_rounded),
-              title: Text('Recent Events'),
-              onTap: () => null,
-            ),
             Divider(),
             ListTile(
               leading: Icon(Icons.people),
               title: Text('Clubs'),
-              onTap: () => null,
+              onTap: () => Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => const MyClub(),
+             ),
+            ),
             ),
             Divider(),
             ListTile(
