@@ -138,6 +138,19 @@ class _MyLoginState extends State<MyLogin> {
             key: _formKey,
             child: Column(
               children: [
+
+                Container(
+                  padding: EdgeInsets.only(left: 20, top: 45),
+                  child: Text(
+                    'DDU Evento',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 30,
+                    ),
+                  ),
+                ),
+                SizedBox(height:20),
                 emailFeild,
               SizedBox(height:20),
                 passwordFeild,
