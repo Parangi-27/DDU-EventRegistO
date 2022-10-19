@@ -49,7 +49,6 @@ class _MyClubState extends State<MyClub> {
             style: TextStyle(color: Colors.white, fontSize: 18),
           ),
           backgroundColor: Colors.deepOrangeAccent,
-          centerTitle: true,
         ),
         body: SingleChildScrollView(
 

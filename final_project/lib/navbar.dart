@@ -1,4 +1,7 @@
 import 'package:final_project/club.dart';
+import 'package:final_project/recent_event.dart';
+import 'package:final_project/user_review_display.dart';
+import 'package:final_project/aboutus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -36,6 +39,11 @@ class NavBar extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.access_time_rounded),
               title: Text('Recent Events'),
+              onTap: () => Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const MyEvent(),
+                ),
+              ),
+
               trailing: ClipOval(
               child: Container(
                 color: Colors.red,
@@ -44,7 +52,7 @@ class NavBar extends StatelessWidget {
 
                 child:Center(
                 child: Text(
-                  '2',
+                  '3',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 12,
@@ -66,17 +74,21 @@ class NavBar extends StatelessWidget {
             ),
             Divider(),
             ListTile(
-              leading: Icon(Icons.find_replace_outlined),
-              title: Text('Resources'),
-              onTap: () => null,
+              leading: Icon(Icons.bookmark_add),
+              title: Text('Event Reviews'),
+              onTap: () => Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const userReviewDisplay(),
+                ),
+              ),
             ),
             Divider(),
             ListTile(
               leading: Icon(Icons.info),
               title: Text('About Us'),
-              onTap: () => null,
+              onTap: () => Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const AboutUs()),
+              ),
             ),
-            Divider(),
           ],
         ),
     );

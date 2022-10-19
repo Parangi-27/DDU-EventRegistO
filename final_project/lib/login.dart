@@ -56,7 +56,8 @@ class _MyLoginState extends State<MyLogin> {
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "DDU Email ID",
+            labelText: 'Email ID',
+            hintText: 'Enter Your DDU Email ID',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           )
@@ -81,7 +82,8 @@ class _MyLoginState extends State<MyLogin> {
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
             contentPadding: EdgeInsets.fromLTRB(25, 15, 25, 15),
-            hintText: "Password",
+            labelText: 'Password',
+            hintText: 'Enter Your Password',
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
             )

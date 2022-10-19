@@ -1,3 +1,4 @@
+import 'package:final_project/recent_event.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project/login.dart';
 import 'package:final_project/home.dart';
@@ -16,6 +17,7 @@ Future main() async {
     'login': (context)=> MyLogin(),
      'home': (context) => MyHome(),
         'club': (context) => MyClub(),
+        'recent_event': (context) => MyEvent(),
     },
     )
 
