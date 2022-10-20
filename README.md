@@ -13,6 +13,11 @@ Nowadays, clubs have to do many physical efforts to increase the registrations f
   3) can give reviews of past events.
   4) can see details of the clubs.
 
+### Future Expansions
+  1) Will get notifications of the upcoming events.
+  2) Will add resource section for the club members to check for availability of the resources/places to conduct event.
+  3) Will add Admin side to manage the events.
+
 ### Created By:-
 1) [Parangi Rathod (CE116)](https://github.com/Parangi-27)
 2) [Zenisha Savaliya (CE119)](https://github.com/zenishasavaliya)
